@@ -1,0 +1,30 @@
+- TODO
+  - Layout
+    - [ ] navbar (search, logo, cart)
+    - [ ] aside (filter panel)
+    - [ ] footer (or persistent footer + pagination controls)
+    - [ ] responsive grid container
+  - Pages
+    - [ ] home page (product list) (use / page)
+    - [ ] product details page (/products/[id])
+    - [ ] 404 or fallback page
+  - Product list
+    - [x] fetch products from API
+    - [ ] card UI: image, title, price
+    - [ ] responsive design (mobile/tablet/desktop)
+    - [ ] load more / pagination
+  - Search & filter
+    - [ ] search bar (title filter)
+  - API and caching
+    - [x] get products
+    - [x] get categories
+    - [ ] caching + revalidation (React Query default caching)
+    - [ ] error state and retry
+  - Authentication
+    - [ ] register/login forms
+    - [ ] JWT storage (localStorage/cookie)
+    - [ ] send auth header in API calls
+    - [ ] logout flow
+  - UX / performance
+    - [ ] loading states
+    - [ ] error states
