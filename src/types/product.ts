@@ -1,11 +1,4 @@
-export interface IProductCategory {
-  id: number;
-  name: string;
-  slug: string;
-  image: string;
-  creationAt: string;
-  updatedAt: string;
-}
+import { ICategory } from "@/types";
 
 export interface IProduct {
   id: number;
@@ -13,7 +6,7 @@ export interface IProduct {
   slug: string;
   price: number;
   description: string;
-  category: IProductCategory;
+  category: ICategory;
   images: string[];
   creationAt: string;
   updatedAt: string;

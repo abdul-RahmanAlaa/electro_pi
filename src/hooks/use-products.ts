@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "@/lib/api/products";
+import { fetchProducts } from "@/lib/api";
 
 export function useProducts() {
   return useQuery({

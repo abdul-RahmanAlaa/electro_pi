@@ -1,9 +1,15 @@
 'use client';
 
+import { useCategories } from '@/hooks/use-categories';
 import { useProducts } from '@/hooks/use-products';
 
 export default function Home() {
   const { data: products, isLoading, isError } = useProducts();
+  const {
+    data: categories,
+    isLoading: isCategoriesLoading,
+    isError: isCategoriesError,
+  } = useCategories();
 
   if (isLoading) {
     return <div>Loading products...</div>;
@@ -17,6 +23,10 @@ export default function Home() {
     <main className="min-h-screen p-6">
       <h1 className="text-3xl font-bold">Products</h1>
       <ul className="mt-4 space-y-4">
+        {categories?.map((category) => (
+          <li key={category.id}>{category.name}</li>
+        ))}
+
         {products?.map((product) => (
           <li key={product.id} className="rounded border p-4 shadow-sm">
             <h2 className="text-xl font-semibold">{product.title}</h2>
