@@ -10,5 +10,8 @@ export default async function fetchProducts(): Promise<IProduct[]> {
   }
 
   const data = await res.json();
-  return data;
+
+  // console.log(data.data);
+  
+  return data.data;
 }

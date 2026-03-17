@@ -1,13 +1,16 @@
-import { ICategory } from "@/types";
-
 export interface IProduct {
-  id: number;
+  _id: number;
   title: string;
-  slug: string;
+  isNew: boolean;
+  oldPrice: string;
   price: number;
+  discountedPrice: number;
   description: string;
-  category: ICategory;
-  images: string[];
-  creationAt: string;
-  updatedAt: string;
+  category: string;
+  type: string;
+  stock: number;
+  brand: string;
+  size: string[];
+  image: string;
+  rating: number;
 }

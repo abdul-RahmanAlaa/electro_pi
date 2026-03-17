@@ -13,5 +13,5 @@ export default async function fetchCategories(): Promise<ICategory[]> {
 
   console.log(data);
   
-  return data;
+  return data.data;
 }

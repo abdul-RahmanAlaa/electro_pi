@@ -11,11 +11,9 @@ export default function RootLayout({
       <body>
         <Providers>
           <Navbar />
-          <div className="mx-auto flex max-w-7xl gap-4 p-4 min-h-[calc(100vh-8.5rem)]">
-            <aside className=" w-96">asd</aside>
-
-            <main>{children}</main>
-          </div>
+          <main className="mx-auto min-h-[calc(100vh-8.5rem)] max-w-7xl">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>
