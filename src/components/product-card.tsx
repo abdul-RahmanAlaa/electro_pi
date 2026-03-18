@@ -27,7 +27,7 @@ export default function ProductCard({
     <Card className="pt-0 h-fit transition-transform duration-300 md:hover:scale-105">
       <Link href={`/${id}`}>
         <Image
-          className="mb-2 block h-60 w-full object-cover"
+          className="mb-2 block h-48 w-full object-cover"
           src={thumbnail}
           alt={title}
           width={192}

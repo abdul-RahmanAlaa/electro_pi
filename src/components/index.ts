@@ -9,3 +9,5 @@ export { default as Loading } from './loading';
 export { default as ErrorMessage } from './error-message';
 export { default as MobileSheet } from './mobile-sheet';
 export { default as ProductDetail } from './product-detail';
+export { default as UserAvatar } from './user-avatar';
+export {default as  AccountButton } from './account-button';
