@@ -1,8 +1,11 @@
 export { default as Navbar } from './navbar';
 export { default as SearchBar } from './search-bar';
 export { default as ProductsGrid } from './products-grid';
+export { default as HomeFilters } from './home-filters';
 export { default as ProductCard } from './product-card';
 export { default as CategoryFilter } from './category-filter';
-export { default as Footer } from './footer';
+export { default as ProductsPagination } from './products-pagination';
 export { default as Loading } from './loading';
 export { default as ErrorMessage } from './error-message';
+export { default as MobileSheet } from './mobile-sheet';
+export { default as ProductDetail } from './product-detail';

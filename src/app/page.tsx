@@ -1,9 +1,9 @@
-import { CategoryFilter, ProductsGrid } from '@/components';
+import { HomeFilters, ProductsGrid } from '@/components';
 
 export default function Home() {
   return (
     <div className="grid grid-cols-4 gap-2 p-2">
-      <CategoryFilter />
+      <HomeFilters className="hidden md:block" />
       <ProductsGrid />
     </div>
   );

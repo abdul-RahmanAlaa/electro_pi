@@ -24,7 +24,7 @@ export default function ProductCard({
   const { id, title, thumbnail, price } = product;
 
   return (
-    <Card className="pt-0 transition-transform duration-300 md:hover:scale-105">
+    <Card className="pt-0 h-fit transition-transform duration-300 md:hover:scale-105">
       <Link href={`/${id}`}>
         <Image
           className="mb-2 block h-60 w-full object-cover"

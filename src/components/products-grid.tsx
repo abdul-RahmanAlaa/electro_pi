@@ -1,30 +1,31 @@
 'use client';
 
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useProducts } from '@/hooks/use-products';
+import type { RootState } from '@/store/store';
 import ProductCard from '@/components/product-card';
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationPrevious,
-  PaginationNext,
-} from '@/components/ui/pagination';
-import { Loading, ErrorMessage } from '@/components';
+import { setPage } from '@/store/pageSlice';
+import { Loading, ErrorMessage, ProductsPagination } from '@/components';
 
 export default function ProductsGrid() {
-  const [page, setPage] = useState(1);
-  const { data: response, isLoading, isError } = useProducts(page, 20);
+  const dispatch = useDispatch();
+  const page = useSelector((state: RootState) => state.page.value);
+  const category = useSelector((state: RootState) => state.category.selected);
+  const searchQuery = useSelector((state: RootState) => state.search.query);
+  const {
+    data: response,
+    isLoading,
+    isError,
+  } = useProducts(page, 8, category, searchQuery);
 
   if (isLoading) {
-    return <Loading className="col-span-3" message="Loading products..." />;
+    return <Loading className="md:col-span-3 col-span-full mx-auto" message="Loading products..." />;
   }
 
   if (isError) {
     return (
       <ErrorMessage
-        className="col-span-3"
+        className="md:col-span-3 col-span-full mx-auto"
         message="Error occurred while fetching products."
       />
     );
@@ -32,11 +33,11 @@ export default function ProductsGrid() {
 
   const products = response?.products || [];
   const totalPages = response?.total
-    ? Math.max(1, Math.ceil(response.total / 20))
+    ? Math.max(1, Math.ceil(response.total / 8))
     : 1;
 
   return (
-    <div className="col-span-3 grid gap-4 rounded-lg bg-neutral-200 p-4">
+    <div className="md:col-span-3 col-span-full mx-auto grid gap-4 rounded-lg bg-neutral-100 p-4 pb-1">
       <div className="mt-2 text-center text-sm text-gray-500">
         Showing {products.length} / {response?.total ?? 0} products
       </div>
@@ -47,41 +48,11 @@ export default function ProductsGrid() {
         ))}
       </div>
 
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              onClick={() => {
-                if (page > 1) setPage(page - 1);
-              }}
-              className="disabled:cursor-not-allowed disabled:opacity-50"
-            />
-          </PaginationItem>
-
-          {Array.from({ length: totalPages }, (_, index) => {
-            const item = index + 1;
-            return (
-              <PaginationItem key={item}>
-                <PaginationLink
-                  isActive={item === page}
-                  onClick={() => setPage(item)}
-                >
-                  {item}
-                </PaginationLink>
-              </PaginationItem>
-            );
-          })}
-
-          <PaginationItem>
-            <PaginationNext
-              onClick={() => {
-                if (page < totalPages) setPage(page + 1);
-              }}
-              className="disabled:cursor-not-allowed disabled:opacity-50"
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <ProductsPagination
+        page={page}
+        totalPages={totalPages}
+        onPageChange={(nextPage) => dispatch(setPage(nextPage))}
+      />
     </div>
   );
 }

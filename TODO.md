@@ -1,20 +1,16 @@
 - TODO
   - Layout
-    - [ ] navbar (search, logo, cart)
-    - [ ] aside (filter panel)
-    - [ ] footer (or persistent footer + pagination controls)
+    - [x] navbar (search, logo, cart)
+    - [x] aside (filter panel)
     - [x] responsive grid container
   - Pages
     - [x] home page (product list)
-    - [ ] product details page (/products/[id])
-    - [ ] 404 or fallback page
+    - [x] product details page
   - Product list
     - [x] fetch products from API
     - [x] card UI: image, title, price
     - [x] responsive design (mobile/tablet/desktop)
     - [x] load more / pagination
-  - Search & filter
-    - [ ] search bar (title filter)
   - API and caching
     - [x] get products
     - [x] get categories
