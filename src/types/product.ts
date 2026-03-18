@@ -14,3 +14,11 @@ export interface IProduct {
   image: string;
   rating: number;
 }
+
+export interface IProductApiResponse {
+  data: IProduct[];
+  totalProducts: number;
+  totalPages: number;
+  currentPage: number;
+  perPage: number;
+}

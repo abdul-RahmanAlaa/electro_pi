@@ -11,7 +11,10 @@ export default async function fetchCategories(): Promise<ICategory[]> {
 
   const data = await res.json();
 
-  console.log(data);
-  
-  return data.data;
+  // API returns categories as an array (or with data wrapper), normalize for safety.
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  return data.data ?? [];
 }

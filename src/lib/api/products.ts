@@ -1,17 +1,22 @@
-import { IProduct } from '@/types';
+import { IProductApiResponse } from '@/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL_DEV;
 
-export default async function fetchProducts(): Promise<IProduct[]> {
-  const res = await fetch(`${baseUrl}/products`);
+export default async function fetchProducts(
+  page = 1,
+  perPage = 10,
+): Promise<IProductApiResponse> {
+  const res = await fetch(
+    `${baseUrl}/products?page=${page}&perPage=${perPage}`,
+  );
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
+    throw new Error(
+      `Failed to fetch products: ${res.status} ${res.statusText}`,
+    );
   }
 
   const data = await res.json();
 
-  // console.log(data.data);
-  
-  return data.data;
+  return data as IProductApiResponse;
 }

@@ -2,10 +2,11 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/lib/api";
+import { IProductApiResponse } from "@/types";
 
-export function useProducts() {
-  return useQuery({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
+export function useProducts(page = 1, perPage = 10) {
+  return useQuery<IProductApiResponse>({
+    queryKey: ["products", page, perPage],
+    queryFn: () => fetchProducts(page, perPage),
   });
 }

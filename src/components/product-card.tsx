@@ -24,7 +24,7 @@ export default function ProductCard({
   const { _id, title, image, price } = product;
 
   return (
-    <Card className="pt-0">
+    <Card className="pt-0 transition-transform duration-300 hover:scale-105">
       <Link href={`/${_id}`}>
         <Image
           className="mb-2 block h-60 w-full object-cover"
@@ -35,9 +35,9 @@ export default function ProductCard({
         />
 
         <CardContent>
-          <CardTitle className="truncate">{title}</CardTitle>
+          <CardTitle className="truncate"> {title} </CardTitle>
 
-          <CardDescription>${price.toFixed(2)}</CardDescription>
+          <CardDescription> ${price} </CardDescription>
         </CardContent>
       </Link>
 
