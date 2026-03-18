@@ -7,18 +7,16 @@ import type { RootState } from '@/store/store';
 import { setCategory, clearCategory } from '@/store/categorySlice';
 import { setPage } from '@/store/pageSlice';
 import {
-  Combobox,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxItem,
-  ComboboxInput,
-  ComboboxList,
-  useComboboxAnchor,
-} from '@/components/ui/combobox';
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select';
+
 
 export default function CategoryFilter() {
   const dispatch = useDispatch();
-  const anchor = useComboboxAnchor();
   const selectedCategory = useSelector(
     (state: RootState) => state.category.selected,
   );
@@ -48,25 +46,23 @@ export default function CategoryFilter() {
   return (
     <div className="p-4">
       <h3 className="mb-2 text-lg font-bold">Category</h3>
-      <Combobox
+      <Select
         value={selectedCategory ?? 'all'}
-        onValueChange={(value) => onCategoryChange(value as string | undefined)}
+        onValueChange={(value: string) => onCategoryChange(value === 'all' ? undefined : value)}
       >
-        <ComboboxInput placeholder="Select a category" />
+        <SelectTrigger>
+          <SelectValue placeholder="Select a category" />
+        </SelectTrigger>
 
-        <ComboboxContent anchor={anchor}>
-          <ComboboxList>
-            <ComboboxItem value="all">All</ComboboxItem>
-            {categories?.map((category) => (
-              <ComboboxItem key={category} value={category}>
-                {category}
-              </ComboboxItem>
-            ))}
-          </ComboboxList>
-
-          {!categories && <ComboboxEmpty>No categories found.</ComboboxEmpty>}
-        </ComboboxContent>
-      </Combobox>
+        <SelectContent>
+          <SelectItem value="all">All</SelectItem>
+          {categories?.map((category) => (
+            <SelectItem key={category} value={category}>
+              {category}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

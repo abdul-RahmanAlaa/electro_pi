@@ -19,13 +19,18 @@ export default function ProductsGrid() {
   } = useProducts(page, 8, category, searchQuery);
 
   if (isLoading) {
-    return <Loading className="md:col-span-3 col-span-full mx-auto" message="Loading products..." />;
+    return (
+      <Loading
+        className="col-span-full mx-auto md:col-span-3"
+        message="Loading products..."
+      />
+    );
   }
 
   if (isError) {
     return (
       <ErrorMessage
-        className="md:col-span-3 col-span-full mx-auto"
+        className="col-span-full mx-auto md:col-span-3"
         message="Error occurred while fetching products."
       />
     );
@@ -37,7 +42,7 @@ export default function ProductsGrid() {
     : 1;
 
   return (
-    <div className="md:col-span-3 col-span-full mx-auto grid gap-4 rounded-lg bg-neutral-100 p-4 pb-1">
+    <div className="col-span-full mx-auto mb-2 grid gap-4 rounded-lg bg-neutral-100 p-4 pb-2 sm:mb-0 sm:pb-0 md:col-span-3">
       <div className="mt-2 text-center text-sm text-gray-500">
         Showing {products.length} / {response?.total ?? 0} products
       </div>

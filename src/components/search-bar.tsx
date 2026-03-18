@@ -14,7 +14,6 @@ export default function SearchBar() {
       <h3 className="mb-2 text-lg font-bold">Search</h3>
       <Input
         value={query}
-        className="ring"
         placeholder="Search products..."
         onChange={(e) => dispatch(setSearchQuery(e.target.value))}
       />
