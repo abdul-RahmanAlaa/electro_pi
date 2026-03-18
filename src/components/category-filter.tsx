@@ -1,17 +1,18 @@
 'use client';
 
 import { Separator } from '@/components/ui/separator';
+import { Loading, ErrorMessage } from '@/components';
 import { useCategories } from '@/hooks/use-categories';
 
 export default function CategoryFilter() {
   const { data: categories, isLoading, isError } = useCategories();
 
   if (isLoading) {
-    return <div>Loading categories...</div>;
+    return <Loading message="Loading categories..." />;
   }
 
   if (isError) {
-    return <div>Error occurred while fetching categories.</div>;
+    return <ErrorMessage message="Error occurred while fetching categories." />;
   }
 
   return (
@@ -22,9 +23,9 @@ export default function CategoryFilter() {
         <Separator className="bg-neutral-400" />
 
         <ul className="p-4">
-          {categories?.map((category) => (
-            <li key={category._id} className="mb-2 list-none">
-              {category.name}
+          {categories?.map((category, index) => (
+            <li key={index} className="mb-2 list-none">
+              {category}
             </li>
           ))}
         </ul>

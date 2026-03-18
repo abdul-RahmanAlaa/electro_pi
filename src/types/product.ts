@@ -1,24 +1,46 @@
 export interface IProduct {
-  _id: number;
+  id: number;
   title: string;
-  isNew: boolean;
-  oldPrice: string;
-  price: number;
-  discountedPrice: number;
   description: string;
   category: string;
-  type: string;
-  stock: number;
-  brand: string;
-  size: string[];
-  image: string;
+  price: number;
+  discountPercentage: number;
   rating: number;
+  stock: number;
+  tags: string[];
+  brand: string;
+  sku: string;
+  weight: number;
+  dimensions: {
+    width: number;
+    height: number;
+    depth: number;
+  };
+  warrantyInformation: string;
+  shippingInformation: string;
+  availabilityStatus: string;
+  reviews: Array<{
+    rating: number;
+    comment: string;
+    date: string;
+    reviewerName: string;
+    reviewerEmail: string;
+  }>;
+  returnPolicy: string;
+  minimumOrderQuantity: number;
+  meta: {
+    createdAt: string;
+    updatedAt: string;
+    barcode: string;
+    qrCode: string;
+  };
+  images: string[];
+  thumbnail: string;
 }
 
 export interface IProductApiResponse {
-  data: IProduct[];
-  totalProducts: number;
-  totalPages: number;
-  currentPage: number;
-  perPage: number;
+  products: IProduct[];
+  limit: number;
+  skip: number;
+  total: number;
 }

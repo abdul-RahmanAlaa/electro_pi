@@ -21,14 +21,14 @@ export default function ProductCard({
   product,
   onAddToCart,
 }: ProductCardProps) {
-  const { _id, title, image, price } = product;
+  const { id, title, thumbnail, price } = product;
 
   return (
     <Card className="pt-0 transition-transform duration-300 hover:scale-105">
-      <Link href={`/${_id}`}>
+      <Link href={`/${id}`}>
         <Image
           className="mb-2 block h-60 w-full object-cover"
-          src={image}
+          src={thumbnail}
           alt={title}
           width={192}
           height={192}
