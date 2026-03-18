@@ -47,4 +47,4 @@ pnpm start
 ## Live demo
 
 - Optional: add link when deployed
-- Example placeholder: `https://electro-pi.example.com`
+- Example placeholder: `https://electro-pi-sooty.vercel.app/`
