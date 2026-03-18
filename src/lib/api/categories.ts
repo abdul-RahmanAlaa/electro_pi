@@ -11,6 +11,5 @@ export default async function fetchCategories(): Promise<string[]> {
 
   const data = await res.json();
 
-  console.log(data);
   return data;
 }
